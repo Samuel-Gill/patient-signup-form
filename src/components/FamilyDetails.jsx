@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Form, Input, Button, Space, DatePicker, Select } from 'antd';
+import { Form, Input, Button, Space, DatePicker, Select, Checkbox } from 'antd';
 import { Row, Col } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
@@ -23,15 +23,31 @@ const { Title } = Typography;
 
 const FamilyDetails = () => {
 
-    const [other, setOther] = useState(false);
-    const [none, setNone] = useState(false);
+    const [other, setOther] = useState({
+        id: "0",
+        value: "none"
+    });
+    const [option, setOption] = useState("");
 
-    const selectRef = useRef([]);
+    const selectRef = useRef();
 
-    function onChange(value) {
+    function onChange(value, fieldKey) {
         console.log(`selected ${value}`);
+        console.log(`selected ${fieldKey}`);
         // value === "other" ? selectRef.current.name === "other" : null;
         console.log(selectRef.current);
+        //setOther({ id: selectRef.current.length, value: value });
+        //console.log(other.id);
+        //console.log(other.value);
+        if (value === "other") {
+            setOption(value);
+        }
+        else if (value === "none") {
+            setOption(value);
+        }
+        else {
+            setOption("same");
+        }
     }
 
     const insuranceStatus = useSelector(state => state.insurance);
@@ -90,16 +106,25 @@ const FamilyDetails = () => {
                                                 },
                                             ]}
                                         >
-                                            <Select ref={el => (selectRef.current[key] = el)} placeholder="Insurance Status" onChange={onChange}>
+                                            <Select ref={el => (selectRef.current = el)} placeholder="Insurance Status" onChange={onChange}>
                                                 <Select.Option value="same" disabled={insuranceStatus}>Same</Select.Option>
                                                 <Select.Option value="other">Other</Select.Option>
                                                 <Select.Option value="none" >None</Select.Option>
                                             </Select>
 
+                                            {((option === "other") ?
+                                                <InsuranceDetail /> : (
+
+                                                    <Row>
+                                                        <Col span={6} offset={0}>
+                                                            <Checkbox onChange={(e) => { e.target.checked ? console.log("attested") : console.log("require attestation") }}>  Insurance Attestation</Checkbox>
+                                                        </Col>
+                                                    </Row>
+
+                                                ))}
                                         </Form.Item>
 
-                                        {(selectRef.current[key] === "other" ?
-                                            <InsuranceDetail /> : null)}
+
                                         <MinusCircleOutlined onClick={() => remove(name)} />
                                     </Space>
                                 ))}

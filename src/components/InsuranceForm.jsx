@@ -90,13 +90,7 @@ const InsuranceForm = () => {
         console.log(`switch to ${checked}`);
         dispatch(setStatus(!checked));
         checked ? setHasInsurance(true) : setHasInsurance(false)
-        //return checked;
     }
-
-    // function noInsurance(e) {
-    //     console.log(`checked = ${e.target.checked}`);
-
-    // }
 
     return (
         <>
