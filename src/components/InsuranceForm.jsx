@@ -7,6 +7,8 @@ import { setStatus } from '../redux/actions/insurance.js';
 import InsuranceDetail from './InsuranceDetail.jsx';
 //import FamilyDetails from './FamilyDetails.jsx';
 import { Typography } from 'antd';
+import CheckboxInsurance from './CheckboxInsurance.jsx';
+import FormLayout from './FormLayout.jsx';
 
 const { Title } = Typography;
 
@@ -95,32 +97,24 @@ const InsuranceForm = () => {
     return (
         <>
             <Title level={3}>Insurance Details</Title>
-            <Row>
-                <Col xs={{ span: 24, offset: 1 }} sm={{ span: 4, offset: 1 }} md={{ span: 4, offset: 4 }} lg={{ span: 12, offset: 4 }}>
-                    {/* <div className="switch"> */}
+            <FormLayout>
+                <Row>
+                    <Col xs={{ span: 24, offset: 1 }} sm={{ span: 4, offset: 1 }} md={{ span: 4, offset: 4 }} lg={{ span: 12, offset: 4 }}>
+                        <Title level={5}>Do you have insurance ? (Yes/No)</Title>
+                        <Switch onChange={onChange} />
+                    </Col>
+                </Row>
 
-                    <Title level={5}>Do you have insurance ? (Yes/No)</Title>
-                    <Switch onChange={onChange} />
-
-
-                    {(!insuranceStatus ?
-                        (
-                            <InsuranceDetail />
-                        )
-                        :
-                        (
-
-                            <Row>
-                                <Col span={6} offset={0}>
-                                    <Checkbox onChange={(e) => { e.target.checked ? console.log("attested") : console.log("require attestation") }}>  Insurance Attestation</Checkbox>
-                                </Col>
-                            </Row>
-
-                        )
-                    )}
-                    {/* </div> */}
-                </Col>
-            </Row>
+                {(!insuranceStatus ?
+                    (
+                        <InsuranceDetail />
+                    )
+                    :
+                    (
+                        <CheckboxInsurance />
+                    )
+                )}
+            </FormLayout>
         </>
     )
 }

@@ -6,6 +6,7 @@ import "./index.css"
 import { PersonalData } from "./components/PersonalData.jsx";
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
+import ParentForm from "./components/ParentForm.jsx";
 
 function App() {
     return (
@@ -13,7 +14,7 @@ function App() {
             <Provider store={store}>
                 <Menu />
                 <Switch>
-                    <Route exact path='/signup' component={() => <><PersonalData /></>} />
+                    <Route exact path='/signup' component={() => <><ParentForm /></>} />
                 </Switch>
             </Provider>
         </>

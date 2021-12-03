@@ -6,40 +6,41 @@ import InsuranceForm from './InsuranceForm.jsx';
 import FamilyDetails from './FamilyDetails.jsx';
 import "../index.css";
 import { Typography } from 'antd';
+import FormLayout from './FormLayout.jsx';
 
 const { Title } = Typography;
 
-const formItemLayout = {
-    labelCol: {
-        xs: {
-            span: 24,
-        },
-        sm: {
-            span: 4,
-        },
-    },
-    wrapperCol: {
-        xs: {
-            span: 24,
-        },
-        sm: {
-            span: 16,
-        },
-    },
-};
+// const formItemLayout = {
+//     labelCol: {
+//         xs: {
+//             span: 24,
+//         },
+//         sm: {
+//             span: 4,
+//         },
+//     },
+//     wrapperCol: {
+//         xs: {
+//             span: 24,
+//         },
+//         sm: {
+//             span: 16,
+//         },
+//     },
+// };
 
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 6,
-        },
-        sm: {
-            span: 16,
-            offset: 11,
-        },
-    },
-};
+// const tailFormItemLayout = {
+//     wrapperCol: {
+//         xs: {
+//             span: 24,
+//             offset: 6,
+//         },
+//         sm: {
+//             span: 16,
+//             offset: 11,
+//         },
+//     },
+// };
 
 //For DOB
 const config = {
@@ -78,6 +79,7 @@ export const PersonalData = () => {
     const prefixSelector = (
         <Form.Item name="prefix" noStyle>
             <Select
+                placeholder="Ext"
                 style={{
                     width: 70,
                 }}
@@ -96,18 +98,18 @@ export const PersonalData = () => {
     return (
         <>
             <Title level={3}>Personal Information</Title>
-
-            <Form
+            <FormLayout>
+                {/* <Form
                 {...formItemLayout}
                 form={form}
-                name="register"
+                name="personal"
                 onFinish={onFinish}
                 initialValues={{
                     residence: ['zhejiang', 'hangzhou', 'xihu'],
                     prefix: '86',
                 }}
                 scrollToFirstError
-            >
+            > */}
                 {/* Phone */}
                 <Form.Item
                     name="phone"
@@ -242,6 +244,12 @@ export const PersonalData = () => {
                 <Form.Item
                     name="id_snapshot"
                     label="ID Snapshot"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please attach ID Snapshot!',
+                        },
+                    ]}
                     valuePropName="fileList"
                     getValueFromEvent={normFile}
                 >
@@ -251,18 +259,20 @@ export const PersonalData = () => {
                 </Form.Item>
 
                 {/* Insurance Status */}
-                <InsuranceForm />
+                {/* <InsuranceForm /> */}
 
                 {/* Family Details */}
-                <FamilyDetails />
+                {/* <FamilyDetails /> */}
 
                 {/* Register Button */}
-                <Form.Item {...tailFormItemLayout}>
+                {/* <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">
-                        Register
+                        Save
                     </Button>
-                </Form.Item>
-            </Form>
+                </Form.Item> */}
+
+                {/* </Form> */}
+            </FormLayout>
 
         </>
     )
