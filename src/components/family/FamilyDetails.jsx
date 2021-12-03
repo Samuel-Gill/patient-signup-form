@@ -4,41 +4,24 @@ import { Row, Col } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
 import { useSelector } from 'react-redux';
-import InsuranceForm from './InsuranceForm.jsx';
-import InsuranceDetail from './InsuranceDetail.jsx';
 import FamilyMember from './FamilyMember.jsx';
 
 const { Title } = Typography;
 
-//For DOB
-// const config = {
-//     rules: [
-//         {
-//             type: 'object',
-//             required: true,
-//             message: 'Please select time!',
-//         },
-//     ],
-// };
-
+const tailFormItemLayout = {
+    wrapperCol: {
+        xs: {
+            span: 24,
+            offset: 6,
+        },
+        sm: {
+            span: 16,
+            offset: 11,
+        },
+    },
+};
 
 const FamilyDetails = () => {
-
-    const [other, setOther] = useState({
-        id: "",
-        value: ""
-    });
-    const [option, setOption] = useState("");
-
-    const selectRef = useRef(0);
-
-
-
-    useEffect(() => {
-        console.log(`use effect wala ref`)
-        console.log(selectRef.current);
-        //setOther({ id: selectRef.current, value: value });
-    }, []);
 
     const insuranceStatus = useSelector(state => state.insurance);
     const onFinish = values => {
@@ -55,21 +38,20 @@ const FamilyDetails = () => {
                                 <>
                                     {fields.map(({ key, name, fieldKey, ...restField }) => (
                                         <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
-                                            {/* <Form.Item
-                                                {...restField}
-                                                name={[name, 'familymember']}
-                                                fieldKey={[fieldKey, 'familymember']}
-                                                rules={[{ required: true, message: 'Missing family member details' }]}
-                                            > */}
                                             <FamilyMember />
-                                            {/* </Form.Item> */}
-
                                             <MinusCircleOutlined onClick={() => remove(name)} />
                                         </Space>
                                     ))}
+
                                     <Form.Item>
                                         <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
                                             Add family member
+                                        </Button>
+                                    </Form.Item>
+
+                                    <Form.Item {...tailFormItemLayout}>
+                                        <Button type="primary" htmlType="submit">
+                                            Save
                                         </Button>
                                     </Form.Item>
                                 </>

@@ -39,7 +39,7 @@ const FormLayout = (props) => {
 
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
-        alert("Form Submitted Successfully");
+        alert("Form Saved Successfully");
     };
 
     return (

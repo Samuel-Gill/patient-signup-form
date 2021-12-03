@@ -1,46 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Form, Button, Switch, Upload, Checkbox, Select, Input, Alert } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-//import { Row, Col } from 'antd';
-//import { useSelector, useDispatch } from "react-redux";
-//import { setStatus } from '../redux/actions/insurance.js';
-//import FamilyDetails from './FamilyDetails.jsx';
-import { Typography } from 'antd';
-
-
-const { Title } = Typography;
-
-const formItemLayout = {
-    labelCol: {
-        xs: {
-            span: 24,
-        },
-        sm: {
-            span: 4,
-        },
-    },
-    wrapperCol: {
-        xs: {
-            span: 24,
-        },
-        sm: {
-            span: 16,
-        },
-    },
-};
-
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 6,
-        },
-        sm: {
-            span: 16,
-            offset: 11,
-        },
-    },
-};
 
 //For Insurance ID
 const normFile = (e) => {
@@ -52,17 +12,8 @@ const normFile = (e) => {
 };
 
 const InsuranceDetail = () => {
-
-    const [form] = Form.useForm();
-
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-        alert("Form Submitted Successfully");
-    };
-
     return (
         <>
-            <br />
             <Form.Item
                 name="id_insurance"
                 label="ID Insurance"

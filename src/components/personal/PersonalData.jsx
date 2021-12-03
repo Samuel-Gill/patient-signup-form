@@ -2,45 +2,10 @@ import React, { useState } from 'react';
 import { Form, Button, Upload, DatePicker, Input, Select } from 'antd';
 import { Country, State, City } from 'country-state-city';
 import { UploadOutlined, RightCircleOutlined } from '@ant-design/icons';
-import InsuranceForm from './InsuranceForm.jsx';
-import FamilyDetails from './FamilyDetails.jsx';
-import "../index.css";
 import { Typography } from 'antd';
-import FormLayout from './FormLayout.jsx';
+import FormLayout from '../common/layout/FormLayout.jsx';
 
 const { Title } = Typography;
-
-// const formItemLayout = {
-//     labelCol: {
-//         xs: {
-//             span: 24,
-//         },
-//         sm: {
-//             span: 4,
-//         },
-//     },
-//     wrapperCol: {
-//         xs: {
-//             span: 24,
-//         },
-//         sm: {
-//             span: 16,
-//         },
-//     },
-// };
-
-// const tailFormItemLayout = {
-//     wrapperCol: {
-//         xs: {
-//             span: 24,
-//             offset: 6,
-//         },
-//         sm: {
-//             span: 16,
-//             offset: 11,
-//         },
-//     },
-// };
 
 //For DOB
 const config = {
@@ -66,14 +31,6 @@ const normFile = (e) => {
 export const PersonalData = () => {
     const [city, setCity] = useState(City.getAllCities());
     const [state, setState] = useState(State.getAllStates());
-    const [next, setNext] = useState(false);
-
-    const [form] = Form.useForm();
-
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-        alert("Form Submitted Successfully");
-    };
 
     //Phone extensions
     const prefixSelector = (
@@ -90,26 +47,11 @@ export const PersonalData = () => {
         </Form.Item>
     );
 
-    //Continue to next page
-    const onContinue = () => {
-        setNext(true);
-    }
-
     return (
         <>
             <Title level={3}>Personal Information</Title>
             <FormLayout>
-                {/* <Form
-                {...formItemLayout}
-                form={form}
-                name="personal"
-                onFinish={onFinish}
-                initialValues={{
-                    residence: ['zhejiang', 'hangzhou', 'xihu'],
-                    prefix: '86',
-                }}
-                scrollToFirstError
-            > */}
+
                 {/* Phone */}
                 <Form.Item
                     name="phone"
@@ -258,22 +200,7 @@ export const PersonalData = () => {
                     </Upload>
                 </Form.Item>
 
-                {/* Insurance Status */}
-                {/* <InsuranceForm /> */}
-
-                {/* Family Details */}
-                {/* <FamilyDetails /> */}
-
-                {/* Register Button */}
-                {/* <Form.Item {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit">
-                        Save
-                    </Button>
-                </Form.Item> */}
-
-                {/* </Form> */}
             </FormLayout>
-
         </>
     )
 }

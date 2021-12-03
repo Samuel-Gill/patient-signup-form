@@ -1,12 +1,12 @@
 import React from 'react'
 import { Tabs } from 'antd';
-import { PersonalData } from './PersonalData.jsx';
-import InsuranceForm from './InsuranceForm.jsx';
-import FamilyDetails from './FamilyDetails.jsx';
+import { PersonalData } from '../components/personal/PersonalData.jsx';
+import InsuranceForm from '../components/insurance/InsuranceForm.jsx';
+import FamilyDetails from '../components/family/FamilyDetails.jsx';
 
 const { TabPane } = Tabs;
 
-const ParentForm = () => {
+const SignupForm = () => {
     return (
         <>
             <Tabs defaultActiveKey="1" type="form" size={"large"}>
@@ -24,4 +24,4 @@ const ParentForm = () => {
     )
 }
 
-export default ParentForm
+export default SignupForm
