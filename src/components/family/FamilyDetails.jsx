@@ -8,24 +8,13 @@ import FamilyMember from './FamilyMember.jsx';
 
 const { Title } = Typography;
 
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 24,
-            offset: 6,
-        },
-        sm: {
-            span: 16,
-            offset: 11,
-        },
-    },
-};
-
 const FamilyDetails = () => {
 
     const insuranceStatus = useSelector(state => state.insurance);
+
     const onFinish = values => {
         console.log('Received values of form:', values);
+        alert("Form Saved Successfully");
     };
     return (
         <>
@@ -33,12 +22,12 @@ const FamilyDetails = () => {
             <Row>
                 <Col xs={{ span: 24, offset: 1 }} sm={{ span: 4, offset: 1 }} md={{ span: 4, offset: 4 }} lg={{ span: 12, offset: 4 }}>
                     <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="on">
-                        <Form.List name="users">
+                        <Form.List name="family_members">
                             {(fields, { add, remove }) => (
                                 <>
                                     {fields.map(({ key, name, fieldKey, ...restField }) => (
                                         <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
-                                            <FamilyMember />
+                                            <FamilyMember name={name} fieldKey={fieldKey} />
                                             <MinusCircleOutlined onClick={() => remove(name)} />
                                         </Space>
                                     ))}
@@ -48,15 +37,14 @@ const FamilyDetails = () => {
                                             Add family member
                                         </Button>
                                     </Form.Item>
-
-                                    <Form.Item {...tailFormItemLayout}>
-                                        <Button type="primary" htmlType="submit">
-                                            Save
-                                        </Button>
-                                    </Form.Item>
                                 </>
                             )}
                         </Form.List>
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit">
+                                Save
+                            </Button>
+                        </Form.Item>
                     </Form>
                 </Col>
             </Row>

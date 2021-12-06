@@ -9,6 +9,19 @@ import FormLayout from '../common/layout/FormLayout.jsx';
 
 const { Title } = Typography;
 
+const tailFormItemLayout = {
+    wrapperCol: {
+        xs: {
+            span: 24,
+            offset: 6,
+        },
+        sm: {
+            span: 16,
+            offset: 11,
+        },
+    },
+};
+
 const InsuranceForm = () => {
     const dispatch = useDispatch();
 
@@ -18,7 +31,6 @@ const InsuranceForm = () => {
     function onChange(checked) {
         console.log(`switch to ${checked}`);
         dispatch(setStatus(!checked));
-        checked ? setHasInsurance(true) : setHasInsurance(false)
     }
 
     return (
@@ -42,25 +54,23 @@ const InsuranceForm = () => {
                     :
                     (
 
-                        <Row>
-                            <Col span={24} offset={2}>
-                                <br />
-                                <Form.Item
-                                    name="checkbox"
-                                    label="Insurance Attestion"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please attest the insurance!',
-                                        },
-                                    ]}
-                                >
+                        < Form.Item
+                            name="attestation"
+                            valuePropName="checked"
+                            rules={[
+                                {
+                                    validator: (_, value) =>
+                                        value ? Promise.resolve() : Promise.reject(new Error('Should have insurance attestion')),
+                                },
+                            ]}
+                            {...tailFormItemLayout}
+                        >
 
-                                    <Checkbox> Attest Insurance</Checkbox>
 
-                                </Form.Item>
-                            </Col>
-                        </Row>
+                            <Checkbox> Attest Insurance</Checkbox>
+
+
+                        </Form.Item>
                     )
                 )}
             </FormLayout>
