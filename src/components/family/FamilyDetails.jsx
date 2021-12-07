@@ -22,11 +22,16 @@ const tailFormItemLayout = {
 };
 
 const FamilyDetails = () => {
-
+    const [form] = Form.useForm();
+    const resetInsurance = useSelector(state => state.insurance);
     const insuranceStatus = useSelector(state => state.insurance);
+
+    //if insurance is reset clear the family details
+    !resetInsurance ? form.resetFields() : null
 
     const onFinish = values => {
         console.log('Received values of form:', values);
+        form.resetFields();
         alert("Form Saved Successfully");
     };
     return (
@@ -34,7 +39,7 @@ const FamilyDetails = () => {
             <Title level={3}>Family Details {insuranceStatus}</Title>
             <Row>
                 <Col xs={{ span: 24, offset: 1 }} sm={{ span: 24, offset: 1 }} md={{ span: 24, offset: 4 }} lg={{ span: 24, offset: 4 }}>
-                    <Form name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="on">
+                    <Form form={form} name="dynamic_form_nest_item" onFinish={onFinish} autoComplete="on">
                         <Form.List name="family_members">
                             {(fields, { add, remove }) => (
                                 <>
