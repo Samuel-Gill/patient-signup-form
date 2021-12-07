@@ -1,8 +1,6 @@
 import React from "react";
 import MenuLayout from "./components/common/layout/MenuLayout.jsx";
 import { Route, Switch } from "react-router-dom";
-import "antd/dist/antd.css";
-import "./index.less"
 import { Provider } from "react-redux";
 import store from "./redux/store.js";
 import SignupForm from "./container/SignupForm.jsx";
