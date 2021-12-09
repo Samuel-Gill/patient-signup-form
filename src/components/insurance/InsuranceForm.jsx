@@ -3,13 +3,14 @@ import { Form, Button, Switch, Upload, Checkbox, Select, Input, Alert } from 'an
 import { Row, Col } from 'antd';
 import { useSelector, useDispatch } from "react-redux";
 import { setStatus } from '../../redux/actions/insurance.js';
+import { RightCircleOutlined } from '@ant-design/icons';
 import InsuranceDetail from './InsuranceDetail.jsx';
+import { Link } from 'react-router-dom';
 import { Typography } from 'antd';
-import FormLayout from '../common/layout/FormLayout.jsx';
-
+1
 const { Title } = Typography;
 
-const tailFormItemLayout = {
+const checkboxLayout = {
     wrapperCol: {
         xs: {
             span: 24,
@@ -30,6 +31,27 @@ const tailFormItemLayout = {
     },
 };
 
+const tailFormItemLayout = {
+    wrapperCol: {
+        xs: {
+            span: 6,
+            offset: 10,
+        },
+        sm: {
+            span: 6,
+            offset: 10,
+        },
+        md: {
+            span: 6,
+            offset: 11,
+        },
+        lg: {
+            span: 6,
+            offset: 11,
+        },
+    },
+};
+
 const InsuranceForm = () => {
     const dispatch = useDispatch();
 
@@ -44,44 +66,52 @@ const InsuranceForm = () => {
     return (
         <>
             <Title level={3}>Insurance Details</Title>
-            <FormLayout>
-                <Row>
-                    <Col xs={{ span: 24, offset: 1 }} sm={{ span: 4, offset: 1 }} md={{ span: 4, offset: 4 }} lg={{ span: 12, offset: 4 }}>
-                        <Title level={5}>Do you have insurance ? (Yes/No)</Title>
-                        <Switch onChange={onChange} />
-                    </Col>
-                </Row>
+            <Row>
+                <Col xs={{ span: 12, offset: 4 }} sm={{ span: 12, offset: 4 }} md={{ span: 12, offset: 4 }} lg={{ span: 12, offset: 4 }}>
+                    <Title level={5}>Do you have insurance ? (Yes/No)</Title>
+                    <Switch onChange={onChange} />
+                </Col>
+            </Row>
 
-                {(!insuranceStatus ?
-                    (
-                        <>
-                            <br />
-                            <InsuranceDetail />
-                        </>
-                    )
-                    :
-                    (
+            {(!insuranceStatus ?
+                (
+                    <>
+                        <br />
+                        <InsuranceDetail />
+                    </>
+                )
+                :
+                (
 
-                        < Form.Item
-                            name="attestation"
-                            valuePropName="checked"
-                            rules={[
-                                {
-                                    validator: (_, value) =>
-                                        value ? Promise.resolve() : Promise.reject(new Error('Should have insurance attestion')),
-                                },
-                            ]}
-                            {...tailFormItemLayout}
-                        >
+                    < Form.Item
+                        name="attestation"
+                        valuePropName="checked"
+                        rules={[
+                            {
+                                validator: (_, value) =>
+                                    value ? Promise.resolve() : Promise.reject(new Error('Should have insurance attestion')),
+                            },
+                        ]}
+                        {...checkboxLayout}
+                    >
 
+                        <Row>
+                            <Col xs={{ span: 12, offset: 3 }} sm={{ span: 12, offset: 3 }} md={{ span: 12, offset: 0 }} lg={{ span: 12, offset: 0 }}>
+                                <Checkbox> Attest Insurance</Checkbox>
+                            </Col>
+                        </Row>
 
-                            <Checkbox> Attest Insurance</Checkbox>
+                    </Form.Item>
+                )
+            )}
 
-
-                        </Form.Item>
-                    )
-                )}
-            </FormLayout>
+            {/* <Link to="/signup/family">
+                <Form.Item {...tailFormItemLayout}>
+                    <Button icon={<RightCircleOutlined />} type="primary">
+                        Next
+                    </Button>
+                </Form.Item>
+            </Link> */}
         </>
     )
 }

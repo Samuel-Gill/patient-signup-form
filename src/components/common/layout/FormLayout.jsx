@@ -7,7 +7,16 @@ const formItemLayout = {
             span: 24,
         },
         sm: {
-            span: 4,
+            span: 24,
+        },
+        md: {
+            span: 24,
+        },
+        lg: {
+            span: 24,
+        },
+        xl: {
+            span: 24,
         },
     },
     wrapperCol: {
@@ -15,20 +24,16 @@ const formItemLayout = {
             span: 24,
         },
         sm: {
-            span: 16,
-        },
-    },
-};
-
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
             span: 24,
-            offset: 6,
         },
-        sm: {
-            span: 16,
-            offset: 11,
+        md: {
+            span: 24,
+        },
+        lg: {
+            span: 24,
+        },
+        xl: {
+            span: 24,
         },
     },
 };
@@ -51,16 +56,14 @@ const FormLayout = (props) => {
                     form={form}
                     name="register"
                     onFinish={onFinish}
+                    initialValues={{
+                        family_members: [],
+                    }}
                     scrollToFirstError
                 >
 
                     {props.children}
 
-                    <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit">
-                            Save
-                        </Button>
-                    </Form.Item>
                 </Form>
             </div>
         </>
