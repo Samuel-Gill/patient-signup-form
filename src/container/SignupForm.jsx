@@ -60,7 +60,7 @@ const SignupForm = () => {
                     <TabPane tab="Family Information" key="3">
                         <FamilyDetails />
                         <Form.Item {...tailFormItemLayout}>
-                            <Button type="primary" htmlType="submit">
+                            <Button type="primary" htmlType="submit" onClick={() => onKeyChange('1')}>
                                 Submit
                             </Button>
                         </Form.Item>
