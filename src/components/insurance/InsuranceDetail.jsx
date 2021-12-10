@@ -16,7 +16,7 @@ const InsuranceDetail = () => {
     return (
         <>
             <Row>
-                <Col span={12} offset={4}>
+                <Col span={20} offset={2}>
                     <Form.Item
                         name="idInsurance"
                         label="ID Insurance"
@@ -30,7 +30,7 @@ const InsuranceDetail = () => {
                         getValueFromEvent={normFile}
                     >
                         <Upload name="logo" action="/upload.do" listType="picture">
-                            <Button icon={<UploadOutlined />}>Click to upload Insurance Id</Button>
+                            <Button icon={<UploadOutlined />} className="uploadButton">Click to upload Insurance Id</Button>
                         </Upload>
                     </Form.Item>
 

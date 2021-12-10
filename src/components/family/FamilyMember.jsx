@@ -23,55 +23,55 @@ const FamilyMember = (props) => {
 
     return (
         <>
-            <Space style={{ display: 'flex', marginBottom: 8 }} align="baseline">
-                <Form.Item
-                    name={[props.name, 'first']}
-                    label="First Name"
-                    fieldKey={[props.fieldKey, 'first']}
-                    rules={[{ required: true, message: 'Missing first name' }]}
-                >
-                    <Input placeholder="First Name" />
-                </Form.Item>
-                <Form.Item
-                    name={[props.name, 'last']}
-                    label="Last Name"
-                    fieldKey={[props.fieldKey, 'last']}
-                    rules={[{ required: true, message: 'Missing last name' }]}
-                >
-                    <Input placeholder="Last Name" />
-                </Form.Item>
-                <Form.Item
-                    name={[props.name, 'date']}
-                    label="Date of Birth"
-                    fieldKey={[props.fieldKey, 'date']}
-                    rules={[
-                        {
-                            type: 'object',
-                            required: true,
-                            message: 'Please select time!',
-                        },
-                    ]}>
-                    <DatePicker />
-                </Form.Item>
-                <Form.Item
-                    name={[props.name, 'insuranceStatus']}
-                    label="Insurance Status"
-                    fieldKey={[props.fieldKey, 'insurance_status']}
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please select insurance status!',
-                        },
-                    ]}
-                >
-                    <Select placeholder="Insurance Status" onChange={(value => { setStatus(value) })}>
-                        <Select.Option value="same" disabled={insuranceStatusPatient}>Same</Select.Option>
-                        <Select.Option value="other">Other</Select.Option>
-                        <Select.Option value="none" >None</Select.Option>
-                    </Select>
-                </Form.Item>
+            {/* <Space style={{ display: 'flex', marginBottom: 8 }} align="baseline"> */}
+            <Form.Item
+                name={[props.name, 'first']}
+                label="First Name"
+                fieldKey={[props.fieldKey, 'first']}
+                rules={[{ required: true, message: 'Missing first name' }]}
+            >
+                <Input placeholder="First Name" />
+            </Form.Item>
+            <Form.Item
+                name={[props.name, 'last']}
+                label="Last Name"
+                fieldKey={[props.fieldKey, 'last']}
+                rules={[{ required: true, message: 'Missing last name' }]}
+            >
+                <Input placeholder="Last Name" />
+            </Form.Item>
+            <Form.Item
+                name={[props.name, 'date']}
+                label="Date of Birth"
+                fieldKey={[props.fieldKey, 'date']}
+                rules={[
+                    {
+                        type: 'object',
+                        required: true,
+                        message: 'Please select time!',
+                    },
+                ]}>
+                <DatePicker />
+            </Form.Item>
+            <Form.Item
+                name={[props.name, 'insuranceStatus']}
+                label="Insurance Status"
+                fieldKey={[props.fieldKey, 'insurance_status']}
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please select insurance status!',
+                    },
+                ]}
+            >
+                <Select placeholder="Insurance Status" onChange={(value => { setStatus(value) })}>
+                    <Select.Option value="same" disabled={insuranceStatusPatient}>Same</Select.Option>
+                    <Select.Option value="other">Other</Select.Option>
+                    <Select.Option value="none" >None</Select.Option>
+                </Select>
+            </Form.Item>
 
-            </Space>
+            {/* </Space> */}
 
             {/* Insurance Details */}
             {status === "other" ?
@@ -92,7 +92,7 @@ const FamilyMember = (props) => {
                                 getValueFromEvent={normFile}
                             >
                                 <Upload name="logo" action="/upload.do" listType="picture">
-                                    <Button icon={<UploadOutlined />}>Click to upload Insurance Id</Button>
+                                    <Button icon={<UploadOutlined />} className="uploadButton">Click to upload Insurance Id</Button>
                                 </Upload>
                             </Form.Item>
 

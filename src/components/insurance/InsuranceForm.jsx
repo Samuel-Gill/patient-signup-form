@@ -14,40 +14,19 @@ const checkboxLayout = {
     wrapperCol: {
         xs: {
             span: 24,
-            offset: 1,
+            offset: 2,
         },
         sm: {
             span: 24,
-            offset: 1,
+            offset: 2,
         },
         md: {
             span: 24,
-            offset: 4,
+            offset: 2,
         },
         lg: {
             span: 24,
-            offset: 4,
-        },
-    },
-};
-
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 6,
-            offset: 10,
-        },
-        sm: {
-            span: 6,
-            offset: 10,
-        },
-        md: {
-            span: 6,
-            offset: 11,
-        },
-        lg: {
-            span: 6,
-            offset: 11,
+            offset: 2,
         },
     },
 };
@@ -67,7 +46,7 @@ const InsuranceForm = () => {
         <>
             <Title level={3}>Insurance Details</Title>
             <Row>
-                <Col xs={{ span: 12, offset: 4 }} sm={{ span: 12, offset: 4 }} md={{ span: 12, offset: 4 }} lg={{ span: 12, offset: 4 }}>
+                <Col xs={{ span: 12, offset: 2 }} sm={{ span: 12, offset: 2 }} md={{ span: 12, offset: 2 }} lg={{ span: 12, offset: 2 }}>
                     <Title level={5}>Do you have insurance ? (Yes/No)</Title>
                     <Switch onChange={onChange} />
                 </Col>
@@ -95,11 +74,9 @@ const InsuranceForm = () => {
                         {...checkboxLayout}
                     >
 
-                        <Row>
-                            <Col xs={{ span: 12, offset: 3 }} sm={{ span: 12, offset: 3 }} md={{ span: 12, offset: 0 }} lg={{ span: 12, offset: 0 }}>
-                                <Checkbox> Attest Insurance</Checkbox>
-                            </Col>
-                        </Row>
+
+                        <Checkbox> Attest Insurance</Checkbox>
+
 
                     </Form.Item>
                 )

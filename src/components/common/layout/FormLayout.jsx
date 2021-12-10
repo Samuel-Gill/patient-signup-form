@@ -48,6 +48,12 @@ const FormLayout = (props) => {
         alert("Form Saved Successfully");
     };
 
+    const onFinishFailed = () => {
+        // console.log('Received values of form: ', values);
+        form.validateFields().then(() => alert("Fill Missing Fields"))
+        alert("Fill Missing Fields");
+    };
+
     return (
         <>
             <div className={props.class}>
@@ -56,6 +62,7 @@ const FormLayout = (props) => {
                     form={form}
                     name="register"
                     onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
                     initialValues={{
                         family_members: [],
                     }}

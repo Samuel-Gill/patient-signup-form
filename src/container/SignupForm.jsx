@@ -27,24 +27,52 @@ const tailFormItemLayout = {
             span: 6,
             offset: 11,
         },
+        xl: {
+            span: 6,
+            offset: 11,
+        },
     },
 };
 
 const SignupForm = () => {
+    //const [form] = Form.useForm();
+    //const { validateFields } = form;
 
     const [activeKey, setActiveKey] = React.useState('1')
-    const onKeyChange = (key) => setActiveKey(key)
+    const onKeyChange = (key) => setActiveKey(key);
+
+    const onChange = (key) => {
+        //onKeyChange(key)
+        //form.validateFields().then(setActiveKey(key))
+        form.submit()
+        form.validateFields().then(() => {
+            onKeyChange(key)
+        }).catch((errorInfo) => { console.log(errorInfo) });
+    }
 
     const insuranceStatusPatient = useSelector(state => state.insurance);
+
+    // const validate = () => {
+    //     //get form fields
+    //     const formValues = form.getFieldValue(true)
+    //     console.log(formValues);
+
+    //     if (formValues != undefined) {
+    //         onChange("2")
+    //     }
+    //     else {
+    //         alert("Kindly fill the required fields")
+    //     }
+    // }
 
     return (
         <>
             <FormLayout>
-                <Tabs defaultActiveKey="1" activeKey={activeKey} onChange={onKeyChange} type="form" size={"large"}>
+                <Tabs defaultActiveKey="1" activeKey={activeKey} onChange={onChange} type="form" size={"large"}>
                     <TabPane tab="Personal Information" key="1">
                         <PersonalData />
                         <Form.Item {...tailFormItemLayout}>
-                            <Button icon={<RightCircleOutlined />} type="primary" onClick={() => onKeyChange('2')}>
+                            <Button icon={<RightCircleOutlined />} type="primary" onClick={() => onChange('2')}>
                                 Next
                             </Button>
                         </Form.Item>
@@ -52,7 +80,7 @@ const SignupForm = () => {
                     <TabPane tab="Insurance Information" key="2">
                         <InsuranceForm />
                         <Form.Item {...tailFormItemLayout}>
-                            <Button icon={<RightCircleOutlined />} type="primary" onClick={() => onKeyChange('3')}>
+                            <Button icon={<RightCircleOutlined />} type="primary" onClick={() => onChange('3')}>
                                 Next
                             </Button>
                         </Form.Item>
@@ -60,7 +88,7 @@ const SignupForm = () => {
                     <TabPane tab="Family Information" key="3">
                         <FamilyDetails />
                         <Form.Item {...tailFormItemLayout}>
-                            <Button type="primary" htmlType="submit" onClick={() => onKeyChange('1')}>
+                            <Button type="primary" htmlType="submit" onClick={() => onChange('1')}>
                                 Submit
                             </Button>
                         </Form.Item>

@@ -24,8 +24,9 @@ const FamilyDetails = () => {
                                 <Col xs={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 20, offset: 2 }}>
                                     <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
                                         <FamilyMember name={name} fieldKey={fieldKey} />
-                                        <MinusCircleOutlined onClick={() => remove(name)} />
+
                                     </Space>
+                                    <MinusCircleOutlined onClick={() => remove(name)} />
                                     <Divider />
                                 </Col>
                             </Row>
@@ -35,7 +36,7 @@ const FamilyDetails = () => {
                             <Col xs={{ span: 24, offset: 6 }} sm={{ span: 24, offset: 6 }} md={{ span: 24, offset: 6 }} lg={{ span: 24, offset: 6 }}>
                                 <Form.Item>
                                     <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                                        Add family member
+                                        Family member
                                     </Button>
                                 </Form.Item>
                             </Col>

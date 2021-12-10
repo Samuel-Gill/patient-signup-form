@@ -4,30 +4,8 @@ import { State, City } from 'country-state-city';
 import { Row, Col } from 'antd';
 import { UploadOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
-import { Link } from 'react-router-dom';
 
 const { Title } = Typography;
-
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
-            span: 6,
-            offset: 10,
-        },
-        sm: {
-            span: 6,
-            offset: 10,
-        },
-        md: {
-            span: 6,
-            offset: 11,
-        },
-        lg: {
-            span: 6,
-            offset: 11,
-        },
-    },
-};
 
 //For DOB
 const config = {
@@ -74,7 +52,7 @@ export const PersonalData = () => {
             <Title level={3}>Personal Information</Title>
 
             <Row>
-                <Col span={17} offset={2}>
+                <Col span={20} offset={2}>
                     {/* Phone */}
                     <Form.Item
                         name="phone"
@@ -217,19 +195,9 @@ export const PersonalData = () => {
                         getValueFromEvent={normFile}
                     >
                         <Upload name="logo" action="/upload.do" listType="picture">
-                            <Button icon={<UploadOutlined />}>Click to upload ID Snapshot</Button>
+                            <Button icon={<UploadOutlined />} className="uploadButton">Click to upload ID Snapshot</Button>
                         </Upload>
                     </Form.Item>
-
-
-                    {/* <Form.Item {...tailFormItemLayout}>
-                        <Link to="/signup/insurance">
-                            <Button icon={<RightCircleOutlined />} type="primary" htmlType="submit">
-                                Next
-                            </Button>
-                        </Link>
-                    </Form.Item> */}
-
                 </Col>
             </Row>
         </>
