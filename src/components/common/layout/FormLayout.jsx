@@ -50,7 +50,7 @@ const FormLayout = (props) => {
 
     const onFinishFailed = () => {
         // console.log('Received values of form: ', values);
-        form.validateFields().then(() => alert("Fill Missing Fields"))
+        //form.validateFields().then(() => alert("Fill Missing Fields"))
         alert("Fill Missing Fields");
     };
 
