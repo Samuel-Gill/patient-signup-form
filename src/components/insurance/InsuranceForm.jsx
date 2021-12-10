@@ -3,29 +3,30 @@ import { Form, Button, Switch, Upload, Checkbox, Select, Input, Alert } from 'an
 import { Row, Col } from 'antd';
 import { useSelector, useDispatch } from "react-redux";
 import { setStatus } from '../../redux/actions/insurance.js';
+import { RightCircleOutlined } from '@ant-design/icons';
 import InsuranceDetail from './InsuranceDetail.jsx';
+import { Link } from 'react-router-dom';
 import { Typography } from 'antd';
-import FormLayout from '../common/layout/FormLayout.jsx';
-
+1
 const { Title } = Typography;
 
-const tailFormItemLayout = {
+const checkboxLayout = {
     wrapperCol: {
         xs: {
             span: 24,
-            offset: 1,
+            offset: 2,
         },
         sm: {
             span: 24,
-            offset: 1,
+            offset: 2,
         },
         md: {
             span: 24,
-            offset: 4,
+            offset: 2,
         },
         lg: {
             span: 24,
-            offset: 4,
+            offset: 2,
         },
     },
 };
@@ -44,44 +45,50 @@ const InsuranceForm = () => {
     return (
         <>
             <Title level={3}>Insurance Details</Title>
-            <FormLayout>
-                <Row>
-                    <Col xs={{ span: 24, offset: 1 }} sm={{ span: 4, offset: 1 }} md={{ span: 4, offset: 4 }} lg={{ span: 12, offset: 4 }}>
-                        <Title level={5}>Do you have insurance ? (Yes/No)</Title>
-                        <Switch onChange={onChange} />
-                    </Col>
-                </Row>
+            <Row>
+                <Col xs={{ span: 12, offset: 2 }} sm={{ span: 12, offset: 2 }} md={{ span: 12, offset: 2 }} lg={{ span: 12, offset: 2 }}>
+                    <Title level={5}>Do you have insurance ? (Yes/No)</Title>
+                    <Switch onChange={onChange} />
+                </Col>
+            </Row>
 
-                {(!insuranceStatus ?
-                    (
-                        <>
-                            <br />
-                            <InsuranceDetail />
-                        </>
-                    )
-                    :
-                    (
+            {(!insuranceStatus ?
+                (
+                    <>
+                        <br />
+                        <InsuranceDetail />
+                    </>
+                )
+                :
+                (
 
-                        < Form.Item
-                            name="attestation"
-                            valuePropName="checked"
-                            rules={[
-                                {
-                                    validator: (_, value) =>
-                                        value ? Promise.resolve() : Promise.reject(new Error('Should have insurance attestion')),
-                                },
-                            ]}
-                            {...tailFormItemLayout}
-                        >
-
-
-                            <Checkbox> Attest Insurance</Checkbox>
+                    < Form.Item
+                        name="attestation"
+                        valuePropName="checked"
+                        rules={[
+                            {
+                                validator: (_, value) =>
+                                    value ? Promise.resolve() : Promise.reject(new Error('Should have insurance attestion')),
+                            },
+                        ]}
+                        {...checkboxLayout}
+                    >
 
 
-                        </Form.Item>
-                    )
-                )}
-            </FormLayout>
+                        <Checkbox> Attest Insurance</Checkbox>
+
+
+                    </Form.Item>
+                )
+            )}
+
+            {/* <Link to="/signup/family">
+                <Form.Item {...tailFormItemLayout}>
+                    <Button icon={<RightCircleOutlined />} type="primary">
+                        Next
+                    </Button>
+                </Form.Item>
+            </Link> */}
         </>
     )
 }
