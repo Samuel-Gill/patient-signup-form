@@ -1,6 +1,5 @@
 import React from 'react'
 import { Form, Button, Tabs } from 'antd';
-import { useSelector } from 'react-redux';
 import { RightCircleOutlined } from '@ant-design/icons';
 import { PersonalData } from '../components/personal/PersonalData.jsx';
 import InsuranceForm from '../components/insurance/InsuranceForm.jsx';

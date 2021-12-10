@@ -4,6 +4,7 @@ import { State, City } from 'country-state-city';
 import { Row, Col } from 'antd';
 import { UploadOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
+import moment from 'moment';
 
 const { Title } = Typography;
 
@@ -101,8 +102,10 @@ export const PersonalData = () => {
                     </Form.Item>
 
                     {/* Date of Birth */}
-                    <Form.Item name="DOB" label="Date of Birth" {...config}>
-                        <DatePicker />
+                    <Form.Item name="dob" label="Date of Birth" {...config}>
+                        <DatePicker placeholder="YYYY-MM-DD" picker={"date"}
+                            disabledDate={(d) => d.isAfter(moment(new Date()))}
+                        />
                     </Form.Item>
 
                     {/* Gender */}

@@ -23,7 +23,6 @@ const FamilyMember = (props) => {
 
     return (
         <>
-            {/* <Space style={{ display: 'flex', marginBottom: 8 }} align="baseline"> */}
             <Form.Item
                 name={[props.name, 'first']}
                 label="First Name"
@@ -70,8 +69,6 @@ const FamilyMember = (props) => {
                     <Select.Option value="none" >None</Select.Option>
                 </Select>
             </Form.Item>
-
-            {/* </Space> */}
 
             {/* Insurance Details */}
             {status === "other" ?
