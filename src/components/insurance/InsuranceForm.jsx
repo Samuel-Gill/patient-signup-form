@@ -81,14 +81,6 @@ const InsuranceForm = () => {
                     </Form.Item>
                 )
             )}
-
-            {/* <Link to="/signup/family">
-                <Form.Item {...tailFormItemLayout}>
-                    <Button icon={<RightCircleOutlined />} type="primary">
-                        Next
-                    </Button>
-                </Form.Item>
-            </Link> */}
         </>
     )
 }

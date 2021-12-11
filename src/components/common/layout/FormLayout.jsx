@@ -43,14 +43,13 @@ const FormLayout = (props) => {
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
+        values.dob = values.dob._d;
         console.log('Received values of form: ', values);
         form.resetFields();
         alert("Form Saved Successfully");
     };
 
     const onFinishFailed = () => {
-        // console.log('Received values of form: ', values);
-        //form.validateFields().then(() => alert("Fill Missing Fields"))
         alert("Fill Missing Fields");
     };
 
