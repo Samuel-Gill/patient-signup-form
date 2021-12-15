@@ -7,7 +7,7 @@ import { RightCircleOutlined } from '@ant-design/icons';
 import InsuranceDetail from './InsuranceDetail.jsx';
 import { Link } from 'react-router-dom';
 import { Typography } from 'antd';
-1
+
 const { Title } = Typography;
 
 const checkboxLayout = {
