@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Upload, DatePicker, Input, Select } from 'antd';
+import { Form } from 'antd';
 
 const formItemLayout = {
     labelCol: {
@@ -7,7 +7,16 @@ const formItemLayout = {
             span: 24,
         },
         sm: {
-            span: 4,
+            span: 24,
+        },
+        md: {
+            span: 24,
+        },
+        lg: {
+            span: 24,
+        },
+        xl: {
+            span: 24,
         },
     },
     wrapperCol: {
@@ -15,20 +24,16 @@ const formItemLayout = {
             span: 24,
         },
         sm: {
-            span: 16,
-        },
-    },
-};
-
-const tailFormItemLayout = {
-    wrapperCol: {
-        xs: {
             span: 24,
-            offset: 6,
         },
-        sm: {
-            span: 16,
-            offset: 11,
+        md: {
+            span: 24,
+        },
+        lg: {
+            span: 24,
+        },
+        xl: {
+            span: 24,
         },
     },
 };
@@ -38,9 +43,14 @@ const FormLayout = (props) => {
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
+        values.dob = values.dob._d;
         console.log('Received values of form: ', values);
         form.resetFields();
         alert("Form Saved Successfully");
+    };
+
+    const onFinishFailed = () => {
+        alert("Fill Missing Fields");
     };
 
     return (
@@ -51,16 +61,15 @@ const FormLayout = (props) => {
                     form={form}
                     name="register"
                     onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                    initialValues={{
+                        family_members: [],
+                    }}
                     scrollToFirstError
                 >
 
                     {props.children}
 
-                    <Form.Item {...tailFormItemLayout}>
-                        <Button type="primary" htmlType="submit">
-                            Save
-                        </Button>
-                    </Form.Item>
                 </Form>
             </div>
         </>
