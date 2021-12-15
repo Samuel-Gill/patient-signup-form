@@ -14,7 +14,7 @@ const config = {
         {
             type: 'object',
             required: true,
-            message: 'Please select time!',
+            message: 'Please select date of birth!',
         },
     ],
 };
