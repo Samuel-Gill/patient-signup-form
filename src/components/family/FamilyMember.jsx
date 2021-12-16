@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-import { Typography } from 'antd';
-import { useSelector } from 'react-redux';
-import { Form, Input, Button, Space, Select, Checkbox, Upload } from 'antd';
+import { Form, Input, Button, Space, Select, Checkbox, Upload, DatePicker } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-const { Title } = Typography;
 
 //For Insurance ID
 const normFile = (e) => {
@@ -18,13 +13,10 @@ const normFile = (e) => {
 
 const FamilyMember = (props) => {
 
-    const insuranceStatusPatient = useSelector(state => state.insurance);
+    const insuranceStatusPatient = props.insuranceStatus;
 
     //Family member insurance status
-    const [status, setStatus] = useState("");
-
-    //Date of Birth
-    const [startDate, setStartDate] = useState(null);
+    const [familyInsuranceStatus, setFamilyInsuranceStatus] = useState("");
 
     return (
         <>
@@ -55,9 +47,8 @@ const FamilyMember = (props) => {
                         message: 'Please select date of birth!',
                     },
                 ]}>
-                {/* <DatePicker /> */}
-                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} dateFormat='dd/MM/yyyy' maxDate={new Date()}
-                    showYearDropdown scrollableMonthYearDropdown
+                <DatePicker placeholder="YYYY-MM-DD" picker={"date"}
+                    disabledDate={(d) => d.isAfter(new Date())}
                 />
             </Form.Item>
             <Form.Item
@@ -71,15 +62,15 @@ const FamilyMember = (props) => {
                     },
                 ]}
             >
-                <Select placeholder="Insurance Status" onChange={(value => { setStatus(value) })}>
-                    <Select.Option value="same" disabled={insuranceStatusPatient}>Same</Select.Option>
+                <Select placeholder="Insurance Status" onChange={(value => { setFamilyInsuranceStatus(value) })}>
+                    <Select.Option value="same" disabled={!insuranceStatusPatient}>Same</Select.Option>
                     <Select.Option value="other">Other</Select.Option>
                     <Select.Option value="none" >None</Select.Option>
                 </Select>
             </Form.Item>
 
             {/* Insurance Details */}
-            {status === "other" ?
+            {familyInsuranceStatus === "other" ?
                 (
                     <>
                         <Space direction="vertical">
@@ -134,7 +125,7 @@ const FamilyMember = (props) => {
                         </Space>
                     </>
                 )
-                : status === "none" ?
+                : familyInsuranceStatus === "none" ?
                     (
                         <Form.Item
 
