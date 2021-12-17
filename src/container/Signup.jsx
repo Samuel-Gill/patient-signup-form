@@ -92,7 +92,6 @@ const Signup = (props) => {
 
     let insuranceStatus = form.getFieldValue('insuranceStatus');
 
-    console.log("get field value", form.getFieldsValue());
     return (
         <>
             <div className={props.class}>
@@ -114,7 +113,7 @@ const Signup = (props) => {
                             </Form.Item>
                         </TabPane>
                         <TabPane tab="Insurance Information" key="2">
-                            <InsuranceForm insuranceStatusPatient={insuranceStatus} />
+                            <InsuranceForm />
                             <Form.Item {...tailFormItemLayout}>
                                 <Button icon={<RightCircleOutlined />} type="primary" onClick={() => onKeyChange('3')}>
                                     Next

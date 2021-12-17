@@ -32,11 +32,7 @@ const checkboxLayout = {
     },
 };
 
-const InsuranceForm = (props) => {
-
-    let insuranceStatusPatient = props.insuranceStatusPatient;
-
-    console.log('insurance form status value', insuranceStatusPatient);
+const InsuranceForm = () => {
 
     const [insuranceStatus, setInsuranceStatus] = useState(false)
 
