@@ -1,12 +1,8 @@
 import React from 'react'
-import { Form, Button, Switch, Upload, Checkbox, Select, Input, Alert } from 'antd';
-import { Row, Col } from 'antd';
-import { useSelector, useDispatch } from "react-redux";
-import { setStatus } from '../../redux/actions/insurance.js';
-import { RightCircleOutlined } from '@ant-design/icons';
+import { Form, Checkbox } from 'antd';
 import InsuranceDetail from './InsuranceDetail.jsx';
-import { Link } from 'react-router-dom';
 import { Typography } from 'antd';
+
 
 const { Title } = Typography;
 
@@ -22,37 +18,28 @@ const checkboxLayout = {
         },
         md: {
             span: 24,
-            offset: 2,
+            offset: 3,
         },
         lg: {
             span: 24,
-            offset: 2,
+            offset: 5,
         },
+        xl: {
+            span: 24,
+            offset: 6,
+        }
     },
 };
 
-const InsuranceForm = () => {
-    const dispatch = useDispatch();
+const InsuranceForm = (props) => {
 
-    const insuranceStatus = useSelector(state => state.insurance);
-
-    //Yes-No Insurance check
-    function onChange(checked) {
-        console.log(`switch to ${checked}`);
-        dispatch(setStatus(!checked));
-    }
+    const insuranceStatusPatient = props.insuranceStatusPatient;
 
     return (
         <>
             <Title level={3}>Insurance Details</Title>
-            <Row>
-                <Col xs={{ span: 12, offset: 2 }} sm={{ span: 12, offset: 2 }} md={{ span: 12, offset: 2 }} lg={{ span: 12, offset: 2 }}>
-                    <Title level={5}>Do you have insurance ? (Yes/No)</Title>
-                    <Switch onChange={onChange} />
-                </Col>
-            </Row>
 
-            {(!insuranceStatus ?
+            {(insuranceStatusPatient ?
                 (
                     <>
                         <br />
@@ -61,7 +48,6 @@ const InsuranceForm = () => {
                 )
                 :
                 (
-
                     < Form.Item
                         name="attestation"
                         valuePropName="checked"
@@ -73,11 +59,7 @@ const InsuranceForm = () => {
                         ]}
                         {...checkboxLayout}
                     >
-
-
                         <Checkbox> Attest Insurance</Checkbox>
-
-
                     </Form.Item>
                 )
             )}

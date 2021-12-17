@@ -3,27 +3,26 @@ import { Form, Button, Space, Divider } from 'antd';
 import { Row, Col } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
-import { useSelector } from 'react-redux';
 import FamilyMember from './FamilyMember.jsx';
 
 const { Title } = Typography;
 
-const FamilyDetails = () => {
+const FamilyDetails = (props) => {
 
-    const insuranceStatus = useSelector(state => state.insurance);
+    const insuranceStatusPatient = props.insuranceStatusPatient;
 
     return (
         <>
-            <Title level={3}>Family Details {insuranceStatus}</Title>
+            <Title level={3}>Family Details</Title>
 
             <Form.List name="familyMembers">
                 {(fields, { add, remove }) => (
                     <>
                         {fields.map(({ key, name, fieldKey, ...restField }) => (
                             <Row>
-                                <Col xs={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} md={{ span: 20, offset: 2 }} lg={{ span: 20, offset: 2 }}>
+                                <Col xs={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} lg={{ span: 14, offset: 5 }} xl={{ span: 12, offset: 6 }}>
                                     <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
-                                        <FamilyMember name={name} fieldKey={fieldKey} />
+                                        <FamilyMember name={name} fieldKey={fieldKey} insuranceStatus={insuranceStatusPatient} />
 
                                     </Space>
                                     <MinusCircleOutlined onClick={() => remove(name)} />
