@@ -1,5 +1,6 @@
-import React from 'react'
-import { Form, Checkbox } from 'antd';
+import React, { useState } from 'react'
+import { Form, Checkbox, Switch } from 'antd';
+import { Row, Col } from 'antd';
 import InsuranceDetail from './InsuranceDetail.jsx';
 import { Typography } from 'antd';
 
@@ -31,15 +32,28 @@ const checkboxLayout = {
     },
 };
 
-const InsuranceForm = (props) => {
+const InsuranceForm = () => {
 
-    const insuranceStatusPatient = props.insuranceStatusPatient;
+    const [insuranceStatus, setInsuranceStatus] = useState(false)
+
+    const onChange = () => {
+        setInsuranceStatus(!insuranceStatus);
+    }
 
     return (
         <>
             <Title level={3}>Insurance Details</Title>
+            {/* Insurance Status */}
+            <Row>
+                <Col xs={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} lg={{ span: 14, offset: 5 }} xl={{ span: 12, offset: 6 }}>
+                    <Title level={5}>Do you have insurance ? (Yes/No)</Title>
+                    <Form.Item name={'insuranceStatus'} initialValue="true" shouldUpdate={true}>
+                        <Switch onChange={onChange} />
+                    </Form.Item>
+                </Col>
+            </Row>
 
-            {(insuranceStatusPatient ?
+            {(insuranceStatus ?
                 (
                     <>
                         <br />

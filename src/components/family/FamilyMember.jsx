@@ -49,6 +49,7 @@ const FamilyMember = (props) => {
                 ]}>
                 <DatePicker placeholder="YYYY-MM-DD" picker={"date"}
                     disabledDate={(d) => d.isAfter(new Date())}
+                    format="YYYY-MM-DD"
                 />
             </Form.Item>
             <Form.Item
@@ -129,9 +130,9 @@ const FamilyMember = (props) => {
                     (
                         <Form.Item
 
-                            name={[props.name, 'insuranceDetail']}
-                            label="Insurance Details"
-                            fieldKey={[props.fieldKey, 'insuranceDetail']}
+                            name={[props.name, 'insuranceAttestation']}
+                            label="Insurance Attestation"
+                            fieldKey={[props.fieldKey, 'insuranceAttestation']}
                             valuePropName="checked"
                             rules={[
                                 {
