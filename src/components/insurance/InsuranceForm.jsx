@@ -1,12 +1,9 @@
-import React from 'react'
-import { Form, Button, Switch, Upload, Checkbox, Select, Input, Alert } from 'antd';
+import React, { useState } from 'react'
+import { Form, Checkbox, Switch } from 'antd';
 import { Row, Col } from 'antd';
-import { useSelector, useDispatch } from "react-redux";
-import { setStatus } from '../../redux/actions/insurance.js';
-import { RightCircleOutlined } from '@ant-design/icons';
 import InsuranceDetail from './InsuranceDetail.jsx';
-import { Link } from 'react-router-dom';
 import { Typography } from 'antd';
+
 
 const { Title } = Typography;
 
@@ -22,37 +19,41 @@ const checkboxLayout = {
         },
         md: {
             span: 24,
-            offset: 2,
+            offset: 3,
         },
         lg: {
             span: 24,
-            offset: 2,
+            offset: 5,
         },
+        xl: {
+            span: 24,
+            offset: 6,
+        }
     },
 };
 
 const InsuranceForm = () => {
-    const dispatch = useDispatch();
 
-    const insuranceStatus = useSelector(state => state.insurance);
+    const [insuranceStatus, setInsuranceStatus] = useState(false)
 
-    //Yes-No Insurance check
-    function onChange(checked) {
-        console.log(`switch to ${checked}`);
-        dispatch(setStatus(!checked));
+    const onChange = () => {
+        setInsuranceStatus(!insuranceStatus);
     }
 
     return (
         <>
             <Title level={3}>Insurance Details</Title>
+            {/* Insurance Status */}
             <Row>
-                <Col xs={{ span: 12, offset: 2 }} sm={{ span: 12, offset: 2 }} md={{ span: 12, offset: 2 }} lg={{ span: 12, offset: 2 }}>
+                <Col xs={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} lg={{ span: 14, offset: 5 }} xl={{ span: 12, offset: 6 }}>
                     <Title level={5}>Do you have insurance ? (Yes/No)</Title>
-                    <Switch onChange={onChange} />
+                    <Form.Item name={'insuranceStatus'} initialValue="true" shouldUpdate={true}>
+                        <Switch onChange={onChange} />
+                    </Form.Item>
                 </Col>
             </Row>
 
-            {(!insuranceStatus ?
+            {(insuranceStatus ?
                 (
                     <>
                         <br />
@@ -61,7 +62,6 @@ const InsuranceForm = () => {
                 )
                 :
                 (
-
                     < Form.Item
                         name="attestation"
                         valuePropName="checked"
@@ -73,11 +73,7 @@ const InsuranceForm = () => {
                         ]}
                         {...checkboxLayout}
                     >
-
-
                         <Checkbox> Attest Insurance</Checkbox>
-
-
                     </Form.Item>
                 )
             )}

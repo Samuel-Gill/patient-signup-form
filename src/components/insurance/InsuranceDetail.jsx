@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Switch, Upload, Checkbox, Select, Input, Alert } from 'antd';
+import { Form, Button, Upload, Select, Input } from 'antd';
 import { Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
@@ -16,7 +16,7 @@ const InsuranceDetail = () => {
     return (
         <>
             <Row>
-                <Col span={20} offset={2}>
+                <Col xs={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} lg={{ span: 14, offset: 5 }} xl={{ span: 12, offset: 6 }}>
                     <Form.Item
                         name="idInsurance"
                         label="ID Insurance"
@@ -51,7 +51,7 @@ const InsuranceDetail = () => {
                         </Select>
                     </Form.Item>
 
-                    <Form.Item name={['insurance number']} label="Insurance Number" rules={[{ required: true }]}>
+                    <Form.Item name={'insuranceNumber'} label="Insurance Number" rules={[{ required: true }]}>
                         <Input type="number" />
                     </Form.Item>
                 </Col>

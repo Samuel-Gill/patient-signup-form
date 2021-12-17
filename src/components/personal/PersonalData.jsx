@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Button, Upload, DatePicker, Input, Select } from 'antd';
+import { Form, Button, Upload, DatePicker, Input, Select, Switch } from 'antd';
 import { State, City } from 'country-state-city';
 import { Row, Col } from 'antd';
-import { UploadOutlined, RightCircleOutlined } from '@ant-design/icons';
+import { UploadOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
-import moment from 'moment';
 
 const { Title } = Typography;
 
@@ -53,7 +52,7 @@ export const PersonalData = () => {
             <Title level={3}>Personal Information</Title>
 
             <Row>
-                <Col span={20} offset={2}>
+                <Col xs={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} md={{ span: 18, offset: 3 }} lg={{ span: 14, offset: 5 }} xl={{ span: 12, offset: 6 }}>
                     {/* Phone */}
                     <Form.Item
                         name="phone"
@@ -104,7 +103,9 @@ export const PersonalData = () => {
                     {/* Date of Birth */}
                     <Form.Item name="dob" label="Date of Birth" {...config}>
                         <DatePicker placeholder="YYYY-MM-DD" picker={"date"}
-                            disabledDate={(d) => d.isAfter(moment(new Date()))}
+                            disabledDate={(d) => d.isAfter(new Date())}
+                            format="YYYY-MM-DD"
+                            disabledTime={true}
                         />
                     </Form.Item>
 
