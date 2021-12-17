@@ -49,6 +49,7 @@ const FamilyMember = (props) => {
                 ]}>
                 <DatePicker placeholder="YYYY-MM-DD" picker={"date"}
                     disabledDate={(d) => d.isAfter(new Date())}
+                    format="YYYY-MM-DD"
                 />
             </Form.Item>
             <Form.Item

@@ -80,7 +80,7 @@ const Signup = (props) => {
     const onKeyChange = (key) => setActiveKey(key)
 
     const onFinish = (values) => {
-        values.dob = values.dob._d;
+        values.dob = values.dob._d.toISOString().split('T')[0];
         console.log('Received values of form: ', values);
         form.resetFields();
         alert("Form Saved Successfully");
@@ -92,6 +92,7 @@ const Signup = (props) => {
 
     let insuranceStatus = form.getFieldValue('insuranceStatus');
 
+    console.log("get field value", form.getFieldsValue());
     return (
         <>
             <div className={props.class}>

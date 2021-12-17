@@ -104,6 +104,7 @@ export const PersonalData = () => {
                     <Form.Item name="dob" label="Date of Birth" {...config}>
                         <DatePicker placeholder="YYYY-MM-DD" picker={"date"}
                             disabledDate={(d) => d.isAfter(new Date())}
+                            format="YYYY-MM-DD"
                             disabledTime={true}
                         />
                     </Form.Item>
@@ -200,12 +201,6 @@ export const PersonalData = () => {
                         <Upload name="logo" action="/upload.do" listType="picture">
                             <Button icon={<UploadOutlined />} className="uploadButton">Click to upload ID Snapshot</Button>
                         </Upload>
-                    </Form.Item>
-
-                    {/* Insurance Status */}
-                    <Title level={5}>Do you have insurance ? (Yes/No)</Title>
-                    <Form.Item name={'insuranceStatus'} >
-                        <Switch />
                     </Form.Item>
                 </Col>
             </Row>
