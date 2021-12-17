@@ -130,9 +130,9 @@ const FamilyMember = (props) => {
                     (
                         <Form.Item
 
-                            name={[props.name, 'insuranceDetail']}
-                            label="Insurance Details"
-                            fieldKey={[props.fieldKey, 'insuranceDetail']}
+                            name={[props.name, 'insuranceAttestation']}
+                            label="Insurance Attestation"
+                            fieldKey={[props.fieldKey, 'insuranceAttestation']}
                             valuePropName="checked"
                             rules={[
                                 {

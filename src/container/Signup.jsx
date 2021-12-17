@@ -80,7 +80,15 @@ const Signup = (props) => {
     const onKeyChange = (key) => setActiveKey(key)
 
     const onFinish = (values) => {
+
+        //changing dates to string
         values.dob = values.dob._d.toISOString().split('T')[0];
+        if (values.familyMembers.length !== undefined) {
+            const familyMembersLength = values.familyMembers.length;
+            for (let index = 0; index < familyMembersLength; index++) {
+                values.familyMembers[index].date = values.familyMembers[index].date._d.toISOString().split('T')[0];
+            }
+        }
         console.log('Received values of form: ', values);
         form.resetFields();
         alert("Form Saved Successfully");
